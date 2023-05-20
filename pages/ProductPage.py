@@ -18,8 +18,6 @@ class ProductPage(Session):
 
     def is_product_page(self, nome_primeiro_produto_hoodies):
         product_url = 'https://magento.softwaretestingboard.com/'+nome_primeiro_produto_hoodies.replace(' ', '-')+'.html'
-        print(product_url)
-        print(nome_primeiro_produto_hoodies)
         return self.is_page(product_url.lower(), nome_primeiro_produto_hoodies)
 
     def clicar_primeiro_produto_hoddies(self):

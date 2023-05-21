@@ -7,7 +7,7 @@ class Test1:
 
     @pytest.mark.suite1
     @pytest.mark.parametrize('all_browsers', ['chrome'])
-    def test_realizar_cadastro_do_usuario_com_email_ja_existente(self, open_home_all_browsers):
+    def test_register_user_with_already_existing_email(self, open_home_all_browsers):
         home_page = open_home_all_browsers
         home_page.open_home_page()
         assert home_page.is_home_page(), 'Página não encontrada!'

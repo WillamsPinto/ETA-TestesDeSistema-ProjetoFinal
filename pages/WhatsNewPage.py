@@ -3,7 +3,7 @@ from Helpers.session import Session
 
 class WhatsNewPage(Session):
 
-    primeiro_item_menu_hoodies = '//*[@id="maincontent"]/div[4]/div[2]/div/div/ul[1]/li[1]/a'
+    xpath_first_item_menu_hoodies = '//*[@id="maincontent"]/div[4]/div[2]/div/div/ul[1]/li[1]/a'
     url = 'https://magento.softwaretestingboard.com/what-is-new.html'
     text_whatsnew_title = "What's New"
 
@@ -13,5 +13,5 @@ class WhatsNewPage(Session):
     def is_whatsnew_page(self):
         return self.is_page(self.url, self.text_whatsnew_title)
 
-    def clicar_primeiro_item_menu_hoddies(self):
-        self.driver.find_element(By.XPATH, self.primeiro_item_menu_hoodies).click()
+    def click_first_item_menu_hoddies(self):
+        self.driver.find_element(By.XPATH, self.xpath_first_item_menu_hoodies).click()

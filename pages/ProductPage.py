@@ -5,7 +5,7 @@ from Helpers.session import Session
 
 class ProductPage(Session):
 
-    primeiro_produto_hoodies = 'product-item-info'
+    first_product_hoodies = 'product-item-info'
     id_product_sizes = 'option-label-size-143-item-166'
     id_product_colors = 'option-label-color-93-item-52'
     add_product_button = 'product-addtocart-button'
@@ -20,10 +20,10 @@ class ProductPage(Session):
         product_url = 'https://magento.softwaretestingboard.com/'+nome_primeiro_produto_hoodies.replace(' ', '-')+'.html'
         return self.is_page(product_url.lower(), nome_primeiro_produto_hoodies)
 
-    def clicar_primeiro_produto_hoddies(self):
-        self.driver.find_element(By.CLASS_NAME, self.primeiro_produto_hoodies).click()
+    def click_first_product_hoddies(self):
+        self.driver.find_element(By.CLASS_NAME, self.first_product_hoodies).click()
 
-    def adicionar_produto_carrinho(self):
+    def add_product_in_cart(self):
         self.driver.find_element(By.ID, self.id_product_sizes).click()
         self.driver.find_element(By.ID, self.id_product_colors).click()
         self.driver.find_element(By.ID, self.add_product_button).click()

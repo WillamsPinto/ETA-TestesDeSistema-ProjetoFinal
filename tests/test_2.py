@@ -10,7 +10,7 @@ class Test2:
 
     @pytest.mark.suite2
     @pytest.mark.parametrize('all_browsers', ['chrome'])
-    def test_realizar_cadastro_de_novo_usuario(self, open_home_all_browsers):
+    def test_make_new_user_register(self, open_home_all_browsers):
         #Arrange
         firstName = 'Jose'
         lastName = 'Silva'

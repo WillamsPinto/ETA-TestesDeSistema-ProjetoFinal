@@ -15,6 +15,12 @@ class ProductPage(Session):
     xpath_compare_opt = '//*[@id="maincontent"]/div[2]/div/div[1]/div[5]/div/a[2]'
     success_message_add_compare_list = "You added product Echo Fit Compression Short to the comparison list."
     xpath_compare_list_link = '//*[@id="maincontent"]/div[1]/div[2]/div/div/div/a'
+    id_xs_size_opt = 'option-label-size-143-item-166'
+    id_blue_color_opt = 'option-label-color-93-item-50'
+    attribute_aria_checked = 'aria-checked'
+    id_quant_field = 'qty'
+    xpath_cart_icon = '/html/body/div[1]/header/div[2]/div[1]/a'
+    xpath_viewCart_link = '//*[@id="minicart-content-wrapper"]/div[2]/div[5]/div/a/span'
 
     def __init__(self, driver):
         super().__init__(driver=driver)
@@ -29,6 +35,9 @@ class ProductPage(Session):
     def add_product_in_cart(self):
         self.driver.find_element(By.ID, self.id_product_sizes).click()
         self.driver.find_element(By.ID, self.id_product_colors).click()
+        self.driver.find_element(By.ID, self.add_product_button).click()
+
+    def click_in_add_button(self):
         self.driver.find_element(By.ID, self.add_product_button).click()
 
     def has_success_message_product_to_cart(self):
@@ -48,3 +57,26 @@ class ProductPage(Session):
 
     def click_in_compare_list_link(self):
         self.driver.find_element(By.XPATH, self.xpath_compare_list_link).click()
+
+    def click_in_xs_size(self):
+        self.driver.find_element(By.ID, self.id_xs_size_opt).click()
+
+    def xs_size_was_selected(self):
+        return self.driver.find_element(By.ID, self.id_xs_size_opt).get_attribute(self.attribute_aria_checked)
+
+    def click_in_blue_color(self):
+        self.driver.find_element(By.ID, self.id_blue_color_opt).click()
+
+    def blue_color_was_selected(self):
+        return self.driver.find_element(By.ID, self.id_blue_color_opt).get_attribute(self.attribute_aria_checked)
+
+    def insert_quant_value(self, quant):
+        self.driver.find_element(By.ID, self.id_quant_field).clear()
+        self.driver.find_element(By.ID, self.id_quant_field).send_keys(quant)
+
+    def click_in_cart_icon(self):
+        time.sleep(3.5)
+        self.driver.find_element(By.XPATH, self.xpath_cart_icon).click()
+
+    def click_in_view_cart_link(self):
+        self.driver.find_element(By.XPATH, self.xpath_viewCart_link).click()

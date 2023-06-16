@@ -12,6 +12,9 @@ class ProductPage(Session):
     xpath_success_message_product_to_cart = '//*[@id="maincontent"]/div[1]/div[2]/div/div/div'
     success_message_product_to_cart = 'You added Circe Hooded Ice Fleece to your shopping cart.'
     xpath_value_cart = '/html/body/div[1]/header/div[2]/div[1]/a/span[2]/span[1]'
+    xpath_compare_opt = '//*[@id="maincontent"]/div[2]/div/div[1]/div[5]/div/a[2]'
+    success_message_add_compare_list = "You added product Echo Fit Compression Short to the comparison list."
+    xpath_compare_list_link = '//*[@id="maincontent"]/div[1]/div[2]/div/div/div/a'
 
     def __init__(self, driver):
         super().__init__(driver=driver)
@@ -35,3 +38,13 @@ class ProductPage(Session):
 
     def has_product_added_to_cart(self, count):
         return self.driver.find_element(By.XPATH, self.xpath_value_cart).text.__eq__(count)
+
+    def click_in_compare_option(self):
+        self.driver.find_element(By.XPATH, self.xpath_compare_opt).click()
+
+    def has_add_product_in_compare_list_successfully(self):
+        time.sleep(2.5)
+        return self.driver.find_element(By.XPATH, self.xpath_success_message_product_to_cart).text.__eq__(self.success_message_add_compare_list)
+
+    def click_in_compare_list_link(self):
+        self.driver.find_element(By.XPATH, self.xpath_compare_list_link).click()

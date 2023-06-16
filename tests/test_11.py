@@ -1,14 +1,13 @@
 import pytest
-
 from pages.ProductPage import ProductPage
 from pages.ShoppingCartPage import ShoppingCartPage
 
 
 class Test11:
 
-    @pytest.mark.suite10
+    @pytest.mark.suite11
     @pytest.mark.parametrize('all_browsers', ['chrome'])
-    def test_select_product_to_compare(self, open_home_all_browsers):
+    def test_Add_Product_to_Cart(self, open_home_all_browsers):
         home_page = open_home_all_browsers
         home_page.open_home_page()
         first_product_name = home_page.get_first_product_name()

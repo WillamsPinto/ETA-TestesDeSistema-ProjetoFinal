@@ -21,6 +21,9 @@ class ProductPage(Session):
     id_quant_field = 'qty'
     xpath_cart_icon = '/html/body/div[1]/header/div[2]/div[1]/a'
     xpath_viewCart_link = '//*[@id="minicart-content-wrapper"]/div[2]/div[5]/div/a/span'
+    xpath_trash_of_cart = '//*[@id="mini-cart"]/li/div/div/div[3]/div[2]/a'
+    text_empty_cart = 'You have no items in your shopping cart.'
+    xpath_empty_cart_message = '//*[@id="minicart-content-wrapper"]/div[2]/strong'
 
     def __init__(self, driver):
         super().__init__(driver=driver)
@@ -80,3 +83,13 @@ class ProductPage(Session):
 
     def click_in_view_cart_link(self):
         self.driver.find_element(By.XPATH, self.xpath_viewCart_link).click()
+
+    def click_in_cart_trash_icon(self):
+        self.driver.find_element(By.XPATH, self.xpath_trash_of_cart).click()
+
+    def click_in_ok_button(self):
+        self.driver.find_element(By.XPATH, "/html/body/div[3]/aside[2]/div[2]/footer/button[2]").click()
+
+    def has_cart_empty_message(self):
+        time.sleep(2.5)
+        return self.driver.find_element(By.XPATH, self.xpath_empty_cart_message).text.__eq__(self.text_empty_cart)
